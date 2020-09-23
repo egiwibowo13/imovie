@@ -2,6 +2,7 @@ package co.id.egiwibowo.imovie.di
 
 import co.id.egiwibowo.imovie.MainActivity
 import co.id.egiwibowo.imovie.data.di.DataComponent
+import co.id.egiwibowo.imovie.ui.home.HomeFragment
 import dagger.Component
 
 @AppScope
@@ -16,4 +17,5 @@ interface AppComponent {
     }
 
     fun inject(activity: MainActivity)
+    fun inject(fragment: HomeFragment)
 }

@@ -5,6 +5,7 @@ import androidx.lifecycle.ViewModelProvider
 import co.id.egiwibowo.imovie.MainViewModel
 import co.id.egiwibowo.imovie.abstraction.utils.viewmodel.ViewModelFactory
 import co.id.egiwibowo.imovie.abstraction.utils.viewmodel.ViewModelKey
+import co.id.egiwibowo.imovie.ui.home.HomeViewModel
 import dagger.Binds
 import dagger.Module
 import dagger.multibindings.IntoMap
@@ -21,4 +22,9 @@ abstract class ViewModelModule {
     @IntoMap
     @ViewModelKey(MainViewModel::class)
     abstract fun bindMainViewModel(viewModel: MainViewModel): ViewModel
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(HomeViewModel::class)
+    abstract fun bindHomeViewModel(viewModel: HomeViewModel): ViewModel
 }

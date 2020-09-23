@@ -2,6 +2,7 @@ apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: "kotlin-kapt"
+apply plugin: "androidx.navigation.safeargs.kotlin"
 apply from: '../shared_dependencies.gradle'
 
 android {
@@ -39,6 +40,7 @@ android {
 
 dependencies {
     implementation project(":libraries:abstraction")
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     implementation project(":domain")
     implementation project(":data")
     implementation fileTree(dir: "libs", include: ["*.jar"])
@@ -56,5 +58,9 @@ dependencies {
     //by viewModels di Activity dan Fragment
     implementation "androidx.activity:activity-ktx:$activity_ktx_version"
     implementation "androidx.fragment:fragment-ktx:$fragment_ktx_version"
+
+    // navigation component
+    implementation "androidx.navigation:navigation-fragment-ktx:$nav_version"
+    implementation "androidx.navigation:navigation-ui-ktx:$nav_version"
 
 }
