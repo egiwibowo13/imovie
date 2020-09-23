@@ -8,19 +8,7 @@ import dagger.Module
 @Module
 abstract class AppModule {
 
-//    @Binds
-//    abstract fun provideGetPopularMovieInteractor(getPopularMovieInteractor: GetPopularMoviesInteractor): GetPopularMoviesUseCase
-
     @Binds
-    abstract fun provideTourismUseCase(tourismInteractor: MovieInteractor): MovieUseCase
+    abstract fun provideMovieUseCase(movieInteractor: MovieInteractor): MovieUseCase
 
 }
-
-//@Module
-//class AppModule {
-//
-//    @AppScope
-//    @Provides
-//    fun provideMovieUSeCase(): GetPopularMoviesUseCase = GetPopularMoviesInteractor()
-//
-//}

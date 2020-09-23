@@ -7,7 +7,7 @@ import android.view.View
 import androidx.activity.viewModels
 import androidx.lifecycle.Observer
 import co.id.egiwibowo.imovie.abstraction.state.Resource
-import co.id.egiwibowo.imovie.ui.ViewModelFactory
+import co.id.egiwibowo.imovie.abstraction.utils.viewmodel.ViewModelFactory
 import javax.inject.Inject
 
 class MainActivity : AppCompatActivity() {

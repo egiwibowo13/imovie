@@ -1,4 +1,4 @@
-package co.id.egiwibowo.imovie.di
+package co.id.egiwibowo.imovie.abstraction.utils.viewmodel
 
 import androidx.lifecycle.ViewModel
 import dagger.MapKey
