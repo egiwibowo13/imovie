@@ -7,7 +7,12 @@
 
     <fragment
         android:id="@+id/homeFragment"
-        android:name="co.id.egiwibowo.imovie.ui.home.HomeFragment"
+        android:name="co.id.egiwibowo.imovie.presentation.home.HomeFragment"
         android:label="fragment_home"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_homeFragment_to_nav_movie"
+            app:destination="@id/nav_movie" />
+    </fragment>
+    <include app:graph="@navigation/nav_movie" />
 </navigation>

@@ -1,4 +1,4 @@
-package co.id.egiwibowo.imovie.ui.home
+package co.id.egiwibowo.imovie.presentation.home
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.asLiveData

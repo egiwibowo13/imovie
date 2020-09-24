@@ -5,7 +5,7 @@ import androidx.lifecycle.ViewModelProvider
 import co.id.egiwibowo.imovie.MainViewModel
 import co.id.egiwibowo.imovie.abstraction.utils.viewmodel.ViewModelFactory
 import co.id.egiwibowo.imovie.abstraction.utils.viewmodel.ViewModelKey
-import co.id.egiwibowo.imovie.ui.home.HomeViewModel
+import co.id.egiwibowo.imovie.presentation.home.HomeViewModel
 import dagger.Binds
 import dagger.Module
 import dagger.multibindings.IntoMap

@@ -1,4 +1,4 @@
-package co.id.egiwibowo.imovie.ui.home
+package co.id.egiwibowo.imovie.presentation.home
 
 import android.view.LayoutInflater
 import android.view.View
