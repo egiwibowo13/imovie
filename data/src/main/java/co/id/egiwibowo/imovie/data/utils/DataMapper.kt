@@ -1,11 +1,13 @@
 package co.id.egiwibowo.imovie.data.utils
 
 import co.id.egiwibowo.imovie.data.source.local.model.DBMovie
+import co.id.egiwibowo.imovie.data.source.remote.response.MovieDetailsResponse
 import co.id.egiwibowo.imovie.data.source.remote.response.MovieResponse
 import co.id.egiwibowo.imovie.domain.entities.Movie
+import co.id.egiwibowo.imovie.domain.entities.MovieDetails
 
 object DataMapper {
-    fun mapResponsesToDB(input: List<MovieResponse>): List<DBMovie> {
+    fun mapListResponsesToDB(input: List<MovieResponse>): List<DBMovie> {
         val movies = ArrayList<DBMovie>()
         input.map {
             val movie = DBMovie(
@@ -24,7 +26,7 @@ object DataMapper {
         return movies
     }
 
-    fun mapDBToDomain(input: List<DBMovie>): List<Movie> =
+    fun mapListDBToDomain(input: List<DBMovie>): List<Movie> =
         input.map {
             Movie(
                 movieId = it.movieId,
@@ -47,6 +49,18 @@ object DataMapper {
         backdropPath = input.backdropPath,
         voteCount = input.voteCount,
         voteAverage = input.voteAverage.toString(),
+        releaseDate = input.releaseDate,
+        isFavorite = input.isFavorite
+    )
+
+    fun mapDBToDomain(input: DBMovie) = Movie(
+        movieId = input.movieId,
+        title = input.title,
+        overview = input.overview,
+        posterPath = input.posterPath,
+        backdropPath = input.backdropPath,
+        voteCount = input.voteCount,
+        voteAverage = input.voteAverage.toFloat(),
         releaseDate = input.releaseDate,
         isFavorite = input.isFavorite
     )

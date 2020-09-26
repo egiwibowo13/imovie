@@ -49,21 +49,21 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/img_backdrop" />
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv_genre"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:orientation="horizontal"
-        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        app:layout_constraintBottom_toBottomOf="@+id/tv_time"
-        app:layout_constraintEnd_toStartOf="@+id/img_favorite"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/tv_time"
-        app:layout_constraintTop_toTopOf="@+id/tv_time"
-        app:layout_constraintVertical_bias="0.0"
-        tools:itemCount="3"
-        tools:listitem="@layout/chips" />
+<!--    <androidx.recyclerview.widget.RecyclerView-->
+<!--        android:id="@+id/rv_genre"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginStart="16dp"-->
+<!--        android:orientation="horizontal"-->
+<!--        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"-->
+<!--        app:layout_constraintBottom_toBottomOf="@+id/tv_time"-->
+<!--        app:layout_constraintEnd_toStartOf="@+id/img_favorite"-->
+<!--        app:layout_constraintHorizontal_bias="0.0"-->
+<!--        app:layout_constraintStart_toEndOf="@+id/tv_time"-->
+<!--        app:layout_constraintTop_toTopOf="@+id/tv_time"-->
+<!--        app:layout_constraintVertical_bias="0.0"-->
+<!--        tools:itemCount="3"-->
+<!--        tools:listitem="@layout/chips" />-->
 
     <TextView
         android:id="@+id/tv_title"
@@ -90,7 +90,7 @@
         android:layout_marginTop="8dp"
         android:src="@drawable/ic_time_24"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_title" />
+        app:layout_constraintTop_toBottomOf="@+id/tv_rating" />
 
     <TextView
         android:id="@+id/tv_time"
@@ -160,16 +160,16 @@
             android:textColor="@color/fontColorDark"
             android:textStyle="bold" />
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rv_actor"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_toRightOf="@+id/tv_actor"
-            android:orientation="horizontal"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            tools:listitem="@layout/card_actor" />
+<!--        <androidx.recyclerview.widget.RecyclerView-->
+<!--            android:id="@+id/rv_actor"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_toRightOf="@+id/tv_actor"-->
+<!--            android:orientation="horizontal"-->
+<!--            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"-->
+<!--            app:layout_constraintEnd_toEndOf="parent"-->
+<!--            app:layout_constraintStart_toStartOf="parent"-->
+<!--            tools:listitem="@layout/card_actor" />-->
     </LinearLayout>
 
 

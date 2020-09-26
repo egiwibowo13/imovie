@@ -13,6 +13,9 @@ interface MovieDao {
     @Query("SELECT * FROM movie where isFavorite = 1")
     fun getFavoritMovies(): Flow<List<DBMovie>>
 
+    @Query("SELECT * FROM movie where isFavorite = 1 AND id = :id")
+    fun getFavoritMovieById(id: Int): Flow<List<DBMovie>>
+
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertMovie(movies: List<DBMovie>)
 

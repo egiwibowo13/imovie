@@ -2,6 +2,7 @@ package co.id.egiwibowo.imovie.di
 
 import co.id.egiwibowo.imovie.MainActivity
 import co.id.egiwibowo.imovie.data.di.DataComponent
+import co.id.egiwibowo.imovie.movie.di.MovieComponent
 import co.id.egiwibowo.imovie.presentation.home.HomeFragment
 import dagger.Component
 

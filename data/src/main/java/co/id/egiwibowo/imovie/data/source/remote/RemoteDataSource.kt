@@ -3,8 +3,8 @@ package co.id.egiwibowo.imovie.data.source.remote
 import android.util.Log
 import co.id.egiwibowo.imovie.abstraction.state.ApiResponse
 import co.id.egiwibowo.imovie.data.source.remote.network.ApiService
+import co.id.egiwibowo.imovie.data.source.remote.response.MovieDetailsResponse
 import co.id.egiwibowo.imovie.data.source.remote.response.MovieResponse
-import co.id.egiwibowo.imovie.domain.entities.Movie
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
@@ -26,6 +26,22 @@ class RemoteDataSource @Inject constructor(private val apiService: ApiService) {
                     emit(ApiResponse.Empty)
                 }
             } catch (e : Exception){
+                emit(ApiResponse.Error(e.toString()))
+                Log.e("RemoteDataSource", e.toString())
+            }
+        }.flowOn(Dispatchers.IO)
+    }
+
+    suspend fun getMovieDetails(movieId: Int): Flow<ApiResponse<MovieDetailsResponse>> {
+        return flow {
+            try {
+                val response = apiService.getMovieDetails(movieId = movieId)
+                if (response != null) {
+                    emit(ApiResponse.Success(response))
+                } else {
+                    emit(ApiResponse.Empty)
+                }
+            } catch (e: Exception) {
                 emit(ApiResponse.Error(e.toString()))
                 Log.e("RemoteDataSource", e.toString())
             }
