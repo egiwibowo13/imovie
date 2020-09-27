@@ -17,6 +17,7 @@ import co.id.egiwibowo.imovie.domain.entities.MovieDetails
 import co.id.egiwibowo.imovie.movie.R
 import co.id.egiwibowo.imovie.movie.di.MovieComponentProvider
 import com.bumptech.glide.Glide
+import kotlinx.android.synthetic.main.about_film.view.*
 import kotlinx.android.synthetic.main.fragment_movie_details.*
 import javax.inject.Inject
 
@@ -101,14 +102,23 @@ class MovieDetailsFragment : Fragment() {
         tv_title.text = movieDetails.title
         tv_description.text = movieDetails.overview
         tv_rating.text = movieDetails.voteAverage.toString()
-        tv_year.text = movieDetails.releaseDate
+        tv_year.text = movieDetails.year
+        tv_time.text = movieDetails.runtime
         context?.let {
             Glide.with(it)
                 .load("https://image.tmdb.org/t/p/w500"+movieDetails.backdropPath)
                 .into(img_backdrop)
+            Glide.with(it)
+                .load("https://image.tmdb.org/t/p/w500"+movieDetails.posterPath)
+                .into(include_about_film.img_poster)
         }
         genreAdapter.setData(movieDetails.genres)
         castAdapter.setData(movieDetails.casts)
+        include_about_film.tv_original_title.text = movieDetails.originalTitle
+        include_about_film.tv_status.text = movieDetails.status
+        include_about_film.tv_budget.text = movieDetails.budget
+        include_about_film.tv_revenue.text = movieDetails.revenue
+        include_about_film.tv_release_date.text = movieDetails.releaseDate
     }
 
     override fun onAttach(context: Context) {

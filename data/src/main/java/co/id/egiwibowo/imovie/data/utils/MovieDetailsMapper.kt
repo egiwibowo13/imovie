@@ -2,6 +2,7 @@ package co.id.egiwibowo.imovie.data.utils
 
 import co.id.egiwibowo.imovie.data.source.remote.response.MovieDetailsResponse
 import co.id.egiwibowo.imovie.domain.entities.MovieDetails
+import java.text.DecimalFormat
 
 object MovieDetailsMapper {
     fun mapResponsesToDomain(input: MovieDetailsResponse): MovieDetails {
@@ -14,9 +15,13 @@ object MovieDetailsMapper {
             voteAverage = input.voteAverage,
             voteCount = input.voteCount,
             releaseDate = input.releaseDate,
-            runtime = input.runtime.toString(),
+            runtime = mapRuntimeToHours(input.runtime),
             genres = mapGenre(input = input.genres),
-            casts = mapCast(input = input.credits.cast)
+            casts = mapCast(input = input.credits.cast),
+            originalTitle = input.originalTitle,
+            status = input.status,
+            budget = mapIntToPrice(input.budget),
+            revenue = mapIntToPrice(input.revenue)
         )
     }
 
@@ -38,5 +43,16 @@ object MovieDetailsMapper {
                 profilePath = it.profilePath
             )
         }
+    }
+
+    private fun mapIntToPrice(input: Int): String {
+        val dec = DecimalFormat("#,###.##")
+        return  "$ " + dec.format(input)
+    }
+
+    private fun mapRuntimeToHours(input: Int): String {
+        val hours: Int = input / 60
+        val minutes: Int = input % 60
+        return "${hours}h ${minutes}min"
     }
 }

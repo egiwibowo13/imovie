@@ -15,7 +15,11 @@ data class MovieDetails(
     val releaseDate: String,
     val runtime: String,
     val genres: List<Genre>,
-    val casts: List<Cast>
+    val casts: List<Cast>,
+    val originalTitle: String,
+    val status: String,
+    val budget: String,
+    val revenue: String
 ) : Parcelable {
 
     @Parcelize
@@ -31,4 +35,9 @@ data class MovieDetails(
         val name: String,
         val profilePath: String?
     ) : Parcelable
+
+    val year: String = let {
+        val dateParts: List<String> = it.releaseDate.split("-")
+        dateParts[0]
+    }
 }

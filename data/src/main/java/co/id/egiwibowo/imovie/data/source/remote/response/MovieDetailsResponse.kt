@@ -34,7 +34,19 @@ data class MovieDetailsResponse(
     val genres: List<Genre>,
 
     @field:SerializedName("credits")
-    val credits: Credits
+    val credits: Credits,
+
+    @field:SerializedName("original_title")
+    val originalTitle: String,
+
+    @field:SerializedName("status")
+    val status: String,
+
+    @field:SerializedName("budget")
+    val budget: Int,
+
+    @field:SerializedName("revenue")
+    val revenue: Int
 ) {
     data class Genre(
         @field:SerializedName("id")
