@@ -45,7 +45,7 @@ class HomeFragment : Fragment() {
 
         movieAdapter = MovieAdapter()
         movieAdapter.onItemClick = { selectedData ->
-            val uri = Uri.parse("imovie://moviedetails/")
+            val uri = Uri.parse("imovie://movie-details/?movieId=${selectedData.movieId}")
             this.findNavController().navigate(uri)
         }
 

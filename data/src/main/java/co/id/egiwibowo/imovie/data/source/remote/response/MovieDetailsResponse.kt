@@ -31,13 +31,35 @@ data class MovieDetailsResponse(
     val runtime: Int,
 
     @field:SerializedName("genres")
-    val genres: List<Genre>
+    val genres: List<Genre>,
+
+    @field:SerializedName("credits")
+    val credits: Credits
 ) {
     data class Genre(
         @field:SerializedName("id")
-        val id: Int,
+        val genreId: Int,
 
         @field:SerializedName("name")
         val name: String
+    )
+
+    data class Credits(
+        @field:SerializedName("cast")
+        val cast: List<Cast>
+    )
+
+    data class Cast(
+        @field:SerializedName("cast_id")
+        val castId: Int,
+
+        @field:SerializedName("name")
+        val name: String,
+
+        @field:SerializedName("character")
+        val character: String,
+
+        @field:SerializedName("profile_path")
+        val profilePath: String?
     )
 }

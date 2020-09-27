@@ -14,7 +14,8 @@ data class MovieDetails(
     val voteAverage: Float,
     val releaseDate: String,
     val runtime: String,
-    val genres: List<Genre>
+    val genres: List<Genre>,
+    val casts: List<Cast>
 ) : Parcelable {
 
     @Parcelize
@@ -22,4 +23,12 @@ data class MovieDetails(
         val id: Int,
         val name: String
     ): Parcelable
+
+    @Parcelize
+    data class Cast(
+        val castId: Int,
+        val character: String,
+        val name: String,
+        val profilePath: String?
+    ) : Parcelable
 }

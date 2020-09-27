@@ -21,6 +21,10 @@
         tools:layout="@layout/fragment_movie_details" >
         <deepLink
             android:id="@+id/deepLinkMovieDetails"
-            app:uri="imovie://moviedetails/" />
+            app:uri="imovie://movie-details/?movieId={movieId}" />
+        <argument
+            android:name="movieId"
+            app:argType="integer"
+            android:defaultValue="0" />
     </fragment>
 </navigation>
