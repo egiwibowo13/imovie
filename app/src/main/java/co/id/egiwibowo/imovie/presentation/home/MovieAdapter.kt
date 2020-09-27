@@ -39,7 +39,7 @@ class MovieAdapter : RecyclerView.Adapter<MovieAdapter.ListViewHolder>() {
                     .load("https://image.tmdb.org/t/p/w500"+data.posterPath)
                     .into(image)
                 tv_title.text = data.title
-                tv_rating.text = "${data.voteAverage}/10"
+                tv_rating.text = "${data.rating}/10"
             }
         }
 

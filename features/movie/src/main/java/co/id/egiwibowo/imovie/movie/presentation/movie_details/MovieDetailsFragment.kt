@@ -11,6 +11,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 import co.id.egiwibowo.imovie.abstraction.state.Resource
 import co.id.egiwibowo.imovie.abstraction.utils.viewmodel.ViewModelFactory
 import co.id.egiwibowo.imovie.domain.entities.MovieDetails
@@ -30,8 +31,11 @@ class MovieDetailsFragment : Fragment() {
         factory
     }
 
+    val args: MovieDetailsFragmentArgs by navArgs()
+
     lateinit var genreAdapter: GenreAdapter
     lateinit var castAdapter: CastAdapeter
+    lateinit var movieAdapeter: RecommendMovieAdapter
 
 
     override fun onCreateView(
@@ -45,13 +49,11 @@ class MovieDetailsFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        arguments?.let {
-            var movieId = it.getInt("movieId", 0)
-            movieDetailsViewModel.getMovieDetails(movieId)
-        }
+        movieDetailsViewModel.getMovieDetails(args.movieId)
 
         setupGenreAdapter()
         setupCastAdapter()
+        setupRecommendMovieAdapter()
 
         movieDetailsViewModel.movieDetails.observe(viewLifecycleOwner, Observer { movieDetails ->
             if (movieDetails != null) {
@@ -66,14 +68,11 @@ class MovieDetailsFragment : Fragment() {
                 }
             }
         })
-
-        movieDetailsViewModel.movie.observe(viewLifecycleOwner, Observer { movie ->
-//            showMovie(movie = movie)
-        })
     }
 
     private fun setupGenreAdapter() {
         genreAdapter = GenreAdapter()
+        genreAdapter.limit = 4
         with(rv_genre) {
             setHasFixedSize(true)
             adapter = genreAdapter
@@ -85,6 +84,17 @@ class MovieDetailsFragment : Fragment() {
         with(rv_actor) {
             setHasFixedSize(true)
             adapter = castAdapter
+        }
+    }
+
+    private fun setupRecommendMovieAdapter() {
+        movieAdapeter = RecommendMovieAdapter()
+        movieAdapeter.onItemClick = { selectedData ->
+            this.findNavController().navigate(MovieDetailsFragmentDirections.actionMovieDetailsFragmentSelf(selectedData.movieId))
+        }
+        with(rv_recommend) {
+            setHasFixedSize(true)
+            adapter = movieAdapeter
         }
     }
 
@@ -101,7 +111,7 @@ class MovieDetailsFragment : Fragment() {
         tv_vote.text = movieDetails.voteCount.toString() + " VOTES"
         tv_title.text = movieDetails.title
         tv_description.text = movieDetails.overview
-        tv_rating.text = movieDetails.voteAverage.toString()
+        tv_rating.text = movieDetails.rating.toString()
         tv_year.text = movieDetails.year
         tv_time.text = movieDetails.runtime
         context?.let {
@@ -114,6 +124,7 @@ class MovieDetailsFragment : Fragment() {
         }
         genreAdapter.setData(movieDetails.genres)
         castAdapter.setData(movieDetails.casts)
+        movieAdapeter.setData(movieDetails.recommend)
         include_about_film.tv_original_title.text = movieDetails.originalTitle
         include_about_film.tv_status.text = movieDetails.status
         include_about_film.tv_budget.text = movieDetails.budget

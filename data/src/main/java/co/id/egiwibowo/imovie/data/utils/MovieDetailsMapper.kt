@@ -12,7 +12,7 @@ object MovieDetailsMapper {
             posterPath = input.posterPath,
             overview = input.overview,
             backdropPath = input.backdropPath,
-            voteAverage = input.voteAverage,
+            rating = input.voteAverage.toString(),
             voteCount = input.voteCount,
             releaseDate = input.releaseDate,
             runtime = mapRuntimeToHours(input.runtime),
@@ -21,7 +21,8 @@ object MovieDetailsMapper {
             originalTitle = input.originalTitle,
             status = input.status,
             budget = mapIntToPrice(input.budget),
-            revenue = mapIntToPrice(input.revenue)
+            revenue = mapIntToPrice(input.revenue),
+            recommend = mapRecommendMovie(input = input.recommendations.results)
         )
     }
 
@@ -54,5 +55,16 @@ object MovieDetailsMapper {
         val hours: Int = input / 60
         val minutes: Int = input % 60
         return "${hours}h ${minutes}min"
+    }
+
+    private fun mapRecommendMovie(input: List<MovieDetailsResponse.RecommendationMovie> ): List<MovieDetails.RecommendMovie> {
+        return input.map {
+            MovieDetails.RecommendMovie(
+                movieId = it.movieId,
+                title = it.title,
+                rating = it.voteAverage.toString(),
+                posterPath = it.posterPath
+            )
+        }
     }
 }

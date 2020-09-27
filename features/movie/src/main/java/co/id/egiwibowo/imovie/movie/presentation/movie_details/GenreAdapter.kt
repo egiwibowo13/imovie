@@ -7,11 +7,12 @@ import androidx.recyclerview.widget.RecyclerView
 import co.id.egiwibowo.imovie.domain.entities.MovieDetails
 import co.id.egiwibowo.imovie.movie.R
 import kotlinx.android.synthetic.main.chips.view.*
-import java.util.ArrayList
+import java.util.*
 
 class GenreAdapter : RecyclerView.Adapter<GenreAdapter.ListViewHolder>() {
 
     private var listData = ArrayList<MovieDetails.Genre>()
+    var limit: Int = 10
     var onItemClick: ((MovieDetails.Genre) -> Unit)? = null
 
     fun setData(newListData: List<MovieDetails.Genre>?) {
@@ -24,24 +25,27 @@ class GenreAdapter : RecyclerView.Adapter<GenreAdapter.ListViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) =
         ListViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.chips, parent, false))
 
-    override fun getItemCount() = listData.size
-
-    override fun onBindViewHolder(holder: ListViewHolder, position: Int) {
-        val data = listData[position]
-        holder.bind(data)
+    override fun getItemCount(): Int {
+        if (listData.size > limit) return limit
+        return listData.size
     }
 
-    inner class ListViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        fun bind(data: MovieDetails.Genre) {
-            with(itemView) {
-                tv_text.text = data.name
-            }
+        override fun onBindViewHolder(holder: ListViewHolder, position: Int) {
+            val data = listData[position]
+            holder.bind(data)
         }
 
-        init {
-            itemView.setOnClickListener {
-                onItemClick?.invoke(listData[adapterPosition])
+        inner class ListViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+            fun bind(data: MovieDetails.Genre) {
+                with(itemView) {
+                    tv_text.text = data.name
+                }
+            }
+
+            init {
+                itemView.setOnClickListener {
+                    onItemClick?.invoke(listData[adapterPosition])
+                }
             }
         }
     }
-}

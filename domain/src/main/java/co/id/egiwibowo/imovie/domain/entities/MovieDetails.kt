@@ -11,7 +11,7 @@ data class MovieDetails(
     val overview: String,
     val backdropPath: String,
     val voteCount: Int,
-    val voteAverage: Float,
+    val rating: String,
     val releaseDate: String,
     val runtime: String,
     val genres: List<Genre>,
@@ -19,7 +19,8 @@ data class MovieDetails(
     val originalTitle: String,
     val status: String,
     val budget: String,
-    val revenue: String
+    val revenue: String,
+    val recommend: List<RecommendMovie>
 ) : Parcelable {
 
     @Parcelize
@@ -34,6 +35,14 @@ data class MovieDetails(
         val character: String,
         val name: String,
         val profilePath: String?
+    ) : Parcelable
+
+    @Parcelize
+    data class RecommendMovie(
+        val movieId: Int,
+        val title: String,
+        val rating: String,
+        val posterPath: String
     ) : Parcelable
 
     val year: String = let {

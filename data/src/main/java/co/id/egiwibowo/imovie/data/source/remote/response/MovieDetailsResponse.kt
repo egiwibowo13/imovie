@@ -46,7 +46,11 @@ data class MovieDetailsResponse(
     val budget: Int,
 
     @field:SerializedName("revenue")
-    val revenue: Int
+    val revenue: Int,
+
+    @field:SerializedName("recommendations")
+    val recommendations: RecommendationListMovie
+
 ) {
     data class Genre(
         @field:SerializedName("id")
@@ -73,5 +77,24 @@ data class MovieDetailsResponse(
 
         @field:SerializedName("profile_path")
         val profilePath: String?
+    )
+
+    data class RecommendationListMovie(
+        @field:SerializedName("results")
+        val results: List<RecommendationMovie>
+    )
+
+    data class RecommendationMovie(
+        @field:SerializedName("id")
+        val movieId: Int,
+
+        @field:SerializedName("title")
+        val title: String,
+
+        @field:SerializedName("vote_average")
+        val voteAverage: Float,
+
+        @field:SerializedName("poster_path")
+        val posterPath: String
     )
 }

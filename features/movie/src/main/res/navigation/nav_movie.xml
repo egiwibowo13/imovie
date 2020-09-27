@@ -26,5 +26,8 @@
             android:name="movieId"
             app:argType="integer"
             android:defaultValue="0" />
+        <action
+            android:id="@+id/action_movieDetailsFragment_self"
+            app:destination="@id/movieDetailsFragment" />
     </fragment>
 </navigation>

@@ -4,18 +4,18 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import co.id.egiwibowo.imovie.domain.entities.Movie
+import co.id.egiwibowo.imovie.domain.entities.MovieDetails
 import co.id.egiwibowo.imovie.movie.R
 import com.bumptech.glide.Glide
 import kotlinx.android.synthetic.main.card_movie.view.*
 import java.util.ArrayList
 
-class MovieAdapter : RecyclerView.Adapter<MovieAdapter.ListViewHolder>() {
+class RecommendMovieAdapter : RecyclerView.Adapter<RecommendMovieAdapter.ListViewHolder>() {
 
-    private var listData = ArrayList<Movie>()
-    var onItemClick: ((Movie) -> Unit)? = null
+    private var listData = ArrayList<MovieDetails.RecommendMovie>()
+    var onItemClick: ((MovieDetails.RecommendMovie) -> Unit)? = null
 
-    fun setData(newListData: List<Movie>?) {
+    fun setData(newListData: List<MovieDetails.RecommendMovie>?) {
         if (newListData == null) return
         listData.clear()
         listData.addAll(newListData)
@@ -33,13 +33,13 @@ class MovieAdapter : RecyclerView.Adapter<MovieAdapter.ListViewHolder>() {
     }
 
     inner class ListViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        fun bind(data: Movie) {
+        fun bind(data: MovieDetails.RecommendMovie) {
             with(itemView) {
                 Glide.with(itemView.context)
                     .load("https://image.tmdb.org/t/p/w500"+data.posterPath)
                     .into(image)
                 tv_title.text = data.title
-                tv_rating.text = "${data.voteAverage}/10"
+                tv_rating.text = "${data.rating}/10"
             }
         }
 

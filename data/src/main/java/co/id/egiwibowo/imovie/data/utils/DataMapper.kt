@@ -1,10 +1,8 @@
 package co.id.egiwibowo.imovie.data.utils
 
 import co.id.egiwibowo.imovie.data.source.local.model.DBMovie
-import co.id.egiwibowo.imovie.data.source.remote.response.MovieDetailsResponse
 import co.id.egiwibowo.imovie.data.source.remote.response.MovieResponse
 import co.id.egiwibowo.imovie.domain.entities.Movie
-import co.id.egiwibowo.imovie.domain.entities.MovieDetails
 
 object DataMapper {
     fun mapListResponsesToDB(input: List<MovieResponse>): List<DBMovie> {
@@ -35,7 +33,7 @@ object DataMapper {
                 posterPath = it.posterPath,
                 backdropPath = it.backdropPath,
                 voteCount = it.voteCount,
-                voteAverage = it.voteAverage.toFloat(),
+                rating = it.voteAverage,
                 releaseDate = it.releaseDate,
                 isFavorite = it.isFavorite
             )
@@ -48,7 +46,7 @@ object DataMapper {
         posterPath = input.posterPath,
         backdropPath = input.backdropPath,
         voteCount = input.voteCount,
-        voteAverage = input.voteAverage.toString(),
+        voteAverage = input.rating,
         releaseDate = input.releaseDate,
         isFavorite = input.isFavorite
     )
@@ -60,7 +58,7 @@ object DataMapper {
         posterPath = input.posterPath,
         backdropPath = input.backdropPath,
         voteCount = input.voteCount,
-        voteAverage = input.voteAverage.toFloat(),
+        rating = input.voteAverage,
         releaseDate = input.releaseDate,
         isFavorite = input.isFavorite
     )
